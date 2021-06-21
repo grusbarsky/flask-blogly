@@ -1,0 +1,21 @@
+{% extends "users/index.html" %}
+    {% block content %}
+        <h2>Edit Post</h2>
+        <form method='POST' action='/posts/{{post.id}}/edit' id='edit-post'>
+            <label>Title:</label>
+                <input type='text' name="edit_post_title" class='edit-title-input' id ="edit_post_title" value="{{post.title}}">
+            <label>Content:</label>
+                <textarea name='edit_post_content' rows='5' class='edit-content--input' id ="edit_post_content">{{post.content}}</textarea>
+            <div class="edit-post-tags">
+                {% for tag in tags %}
+                <div>
+                    <input class="tags-select" type="checkbox" value="{{tag.id}}" id="tag_{{tag.id}}"
+                        {% if tag in post.tags %}checked{% endif %} name="tags">
+                    <label class="edit-post-tags" for="tag_{{tag.id}}">{{ tag.name }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type='submit' id='post-save-button'>Save</button>
+            <button method='GET' action='/users/post.user.id' id='post-edit-cancel-button'>Cancel</button>
+        </form>
+    {% endblock %}

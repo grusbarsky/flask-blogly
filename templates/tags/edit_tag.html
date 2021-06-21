@@ -1,0 +1,11 @@
+{% block content %}
+        <h2>Edit Tag</h2>
+        <form method='POST' action='/tags/{{tag.id}}/edit' id='edit-tag'>
+            <label>Name:</label>
+                <input type='text' name="edit_tag_name" id ="edit_tag_name" value="{{tag.name}}">
+            <button type='submit' id='tag-save-button'>Save</button>
+        </form>
+        <form method='GET' action='/tags'>
+            <button id='tag-edit-cancel-button'>Cancel</button>
+        </form>
+    {% endblock %}

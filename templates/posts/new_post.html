@@ -1,0 +1,28 @@
+{% extends "users/index.html" %}
+    {% block content %}
+        <h2>Add Post for {{user.first_name}}</h2>
+        <form id='new-post-form' method='POST'>
+            <label>Title:</label>
+                <input type='text' name='title' class='post-input' id ="title" placeholder="Title">
+            <label>Content:</label>
+                <textarea name='content' rows='5' class='post-input' id ="content" placeholder="Post Content"></textarea>
+                <div class="form-check">
+                    {% for tag in tags %}
+                    <div>
+                      <input class="tag-add"
+                             type="checkbox"
+                             value="{{tag.id}}"
+                             id="tag_{{tag.id}}"
+                             name="tags">
+                      <label class="tag-form-label" for="tag_{{ tag.id }}">
+                        {{ tag.name }}
+                      </label>
+                    </div>
+                    {% endfor %}
+                  </div>
+            <button id='form_submit_button' type='submit'>Add</button>
+        </form>
+        <form method='GET' action='/users/{{user.id}}'>
+            <button id='cancel_form_button'>Cancel</button>
+        </form>
+    {% endblock %}

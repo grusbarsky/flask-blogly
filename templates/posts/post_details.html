@@ -1,0 +1,23 @@
+{% extends "users/index.html" %}
+    {% block content %}
+        <h2>
+            {{post.title}}
+        </h2>
+        <p>{{post.content}}</p>
+        <i>By:{{post.user.first_name}} {{post.user.last_name}}</i>
+        {% if post.tags %}
+            <b>Tags:</b>
+                {% for tag in post.tags %}
+                <a href="/tags/{{tag.id}}"><i>{{ tag.name }}</i></a>
+                {% endfor %}
+        {% endif %}
+        <form action='/posts/{{post.id}}/edit' method='GET'>
+            <button id='edit-post-button'>Edit</button>
+        </form>
+        <form action='/posts/{{post.id}}/delete' method='POST'>
+            <button id='delete-post-button'>Delete</button>
+        </form>
+        <form action='/users/{{post.user.id}}' method='GET'>
+            <button id='cancel-post-button'>Cancel</button>
+        </form>
+    {% endblock %}

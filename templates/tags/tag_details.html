@@ -1,0 +1,15 @@
+{% extends "users/index.html" %}
+    {% block content %}
+        <h2>
+            {{tag.name}}
+        </h2>
+        <form action='/tags/{{tag.id}}/edit' method='GET'>
+            <button id='edit-tag-button'>Edit</button>
+        </form>
+        <form action='/tags/{{tag.id}}/delete' method='POST'>
+            <button id='delete-tag-button'>Delete</button>
+        </form>
+        <form action='/tags' method='GET'>
+            <button id='cancel-tag-button'>Cancel</button>
+        </form>
+    {% endblock %}
