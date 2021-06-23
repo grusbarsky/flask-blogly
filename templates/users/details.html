@@ -1,15 +1,18 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
-        <h2>
-            {{user.first_name, user.last_name}}
-        </h2>
-        <img src={{user.image_url}}>
-        <form action='/users/{{user.id}}/edit' method='GET'>
-            <button id='edit-button'>Edit</button>
-        </form>
-        <form action='/users/{{user.id}}/delete' method='POST'>
-            <button id='delete-button'>Delete</button>
-        </form>
+        <div id='user-page'>
+            <img id='user-image' src={{user.image_url}}>
+            <h2 id='user-name'>
+                {{user.first_name}} {{user.last_name}}
+            </h2>
+        </div>
+        <div id='user-buttons' class='buttons-container'>
+            <a href='/users/{{user.id}}/edit'><button class='button'>Edit</button></a>
+            <form action='/users/{{user.id}}/delete' method='POST' >
+                <button class='button'>Delete</button>
+            </form>
+            <a href='/users/{{user.id}}/posts/new'><button class='button'>Add Post</button></a>
+        </div>
         <p>
             <h3>Posts</h3>
             <ul>
@@ -19,8 +22,5 @@
                     </li>
                 {% endfor %}
             </ul>
-            <form action='/users/{{user.id}}/posts/new' method='GET'>
-                <button id='add-post-button'>Add Post</button>
-            </form>
         </p>
     {% endblock %}

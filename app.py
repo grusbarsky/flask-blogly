@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, redirect, flash, session, request
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, User, Post, Tag
+from models import db, connect_db, User, Post, Tag, PostTag
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -18,13 +18,13 @@ db.create_all()
 @app.route('/')
 def homepage():
     """redirects to list of users"""
-    return redirect("/users")
+    return redirect("/posts")
 
 @app.route('/users')
 def list_users():
     """Show list of all users in DB"""
     users = User.query.order_by(User.last_name, User.first_name).all()
-    return render_template('users/index.html', users=users)
+    return render_template('index.html', users=users)
 
 @app.route('/users/new', methods=['GET'])
 def make_new_user():
@@ -34,8 +34,8 @@ def make_new_user():
 @app.route('/users/new', methods = ["POST"])
 def create_user():
     """form submit to create new user"""
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
+    first_name = request.form['first_name'].capitalize()
+    last_name = request.form['last_name'].capitalize()
     image_url = request.form['image_url']
 
     new_user = User(first_name=first_name, last_name=last_name, image_url=image_url)
@@ -79,7 +79,14 @@ def delete_user(user_id):
 
     return redirect("/users")
 
-# app routes for posts
+#routes for posts
+
+@app.route('/posts')
+def list_posts():
+    """Show all posts"""
+
+    posts=Post.query.all()
+    return render_template('posts/posts.html', posts=posts)
 
 @app.route('/users/<int:user_id>/posts/new', methods=['GET'])
 def make_new_post(user_id):
@@ -94,7 +101,7 @@ def create_post(user_id):
 
     user = User.query.get_or_404(user_id)
     title = request.form['title']
-    content = request.form['title']
+    content = request.form['content']
     tag_ids = [int(num) for num in request.form.getlist("tags")]
     tags = Tag.query.filter(Tag.id.in_(tag_ids)).all()
     
@@ -170,11 +177,14 @@ def create_tag():
     
     name = request.form['tag_name']
 
-    new_tag = Tag(name = name)
-    db.session.add(new_tag)
-    db.session.commit()
+    if "name" in session:
+        return redirect("/tags")
 
-    return redirect("/tags")
+    else:
+        new_tag = Tag(name = name)
+        db.session.add(new_tag)
+        db.session.commit()
+        return redirect("/tags")
 
 @app.route('/tags/<int:tag_id>/edit')
 def edit_tag(tag_id):

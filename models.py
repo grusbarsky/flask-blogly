@@ -3,6 +3,7 @@ import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+default_img = "https://i.stack.imgur.com/l60Hf.png"
 
 
 class User(db.Model):
@@ -14,7 +15,7 @@ class User(db.Model):
                     autoincrement = True)
     first_name = db.Column(db.String(50), nullable = False)
     last_name = db.Column(db.String(50), nullable = False)
-    image_url = db.Column(db.Text, nullable = False)
+    image_url = db.Column(db.Text, nullable = False, default=default_img)
 
     posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
 

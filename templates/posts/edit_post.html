@@ -1,11 +1,13 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
         <h2>Edit Post</h2>
-        <form method='POST' action='/posts/{{post.id}}/edit' id='edit-post'>
+        <form method='POST' action='/posts/{{post.id}}/edit' class='form'>
             <label>Title:</label>
-                <input type='text' name="edit_post_title" class='edit-title-input' id ="edit_post_title" value="{{post.title}}">
+                <input type='text' name="edit_post_title" value="{{post.title}}">
+            <br>
+            <br>
             <label>Content:</label>
-                <textarea name='edit_post_content' rows='5' class='edit-content--input' id ="edit_post_content">{{post.content}}</textarea>
+                <input type='text' name='edit_post_content' value="{{post.content}}">
             <div class="edit-post-tags">
                 {% for tag in tags %}
                 <div>
@@ -15,7 +17,9 @@
                 </div>
                 {% endfor %}
             </div>
-            <button type='submit' id='post-save-button'>Save</button>
-            <button method='GET' action='/users/post.user.id' id='post-edit-cancel-button'>Cancel</button>
+            <div class='buttons-container'>
+                <button type='submit' class='button'>Save</button>
+                <button method='GET' action='/users/post.user.id' class='button'>Cancel</button>
+            </div>
         </form>
     {% endblock %}

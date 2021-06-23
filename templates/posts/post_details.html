@@ -1,23 +1,30 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
         <h2>
             {{post.title}}
         </h2>
-        <p>{{post.content}}</p>
-        <i>By:{{post.user.first_name}} {{post.user.last_name}}</i>
-        {% if post.tags %}
-            <b>Tags:</b>
-                {% for tag in post.tags %}
-                <a href="/tags/{{tag.id}}"><i>{{ tag.name }}</i></a>
-                {% endfor %}
-        {% endif %}
-        <form action='/posts/{{post.id}}/edit' method='GET'>
-            <button id='edit-post-button'>Edit</button>
-        </form>
-        <form action='/posts/{{post.id}}/delete' method='POST'>
-            <button id='delete-post-button'>Delete</button>
-        </form>
-        <form action='/users/{{post.user.id}}' method='GET'>
-            <button id='cancel-post-button'>Cancel</button>
-        </form>
+        <div id='post-details'>
+            <p class='post-info'>{{post.content}}</p>
+            <i class='post-info'>By:{{post.user.first_name}} {{post.user.last_name}}</i>
+            <br>
+            {% if post.tags %}
+                <i class='post-info'>Tags:</i>
+                    {% for tag in post.tags %}
+                    <a class='post-info' href="/tags/{{tag.id}}"><i>{{ tag.name }}</i></a>
+                    {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+        <br>
+        <div class='buttons-container'>
+            <form class='form-button' action='/posts/{{post.id}}/edit' method='GET'>
+                <button class='button'>Edit</button>
+            </form>
+            <form class='form-button' action='/posts/{{post.id}}/delete' method='POST'>
+                <button class='button'>Delete</button>
+            </form>
+            <form class='form-button' action='/users/{{post.user.id}}' method='GET'>
+                <button class='button'>Cancel</button>
+            </form>
+        </div>
     {% endblock %}

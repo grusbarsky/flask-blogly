@@ -1,14 +1,18 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
         <h2>Edit User</h2>
-        <form method='POST' id='edit-user'>
+        <form class='form' method='POST' id='edit-user'>
             <label>First Name:</label>
                 <input type='text' name="edit_first_name" class='edit-form-input' id ="edit_first_name" value="{{user.first_name}}">
             <label>Last Name:</label>
                 <input type='text' name="edit_last_name" class='edit-form-input' id ="edit_last_name" value="{{user.last_name}}">
             <label>Image URL:</label>
                 <input type='text' name="edit_image_url" class='edit-form-input' id ="edit_image_url" value="{{user.image_url}}">
-            <button id='save-button'>Save</button>
-            <button method='GET' action='/users' id='cancel-button'>Cancel</button>
+            <br>
+            <br>
+            <div class='buttons-container'>
+                <button class='button'>Save</button>
+                <button method='GET' action='/users' class='button'>Cancel</button>
+            </div>
         </form>
     {% endblock %}

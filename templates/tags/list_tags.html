@@ -1,4 +1,4 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
     <h2>Tags</h2>
     <ul>
@@ -8,5 +8,7 @@
         </li>
     {% endfor %}
     </ul>
-    <a href=/tags/new><button id='add-tag-button'>Add Tag</button></a>
+    <div class='buttons-container'>
+        <a href=/tags/new><button class='button'>Add Tag</button></a>
+    </div>
     {% endblock %}

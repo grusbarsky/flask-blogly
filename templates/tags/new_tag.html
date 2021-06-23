@@ -1,12 +1,16 @@
-{% extends "users/index.html" %}
+{% extends "index.html" %}
     {% block content %}
         <h2>Add New Tag</h2>
-        <form id='new-tag-form' method='POST'>
+        <form class='form' method='POST'>
             <label>Name:</label>
                 <input type='text' name='tag_name' class='tag-input' id ="tag-name" placeholder="Tag Name">
-            <button id='tag_submit_button' type='submit'>Add</button>
-        </form>
-        <form method='GET' action='/tags'>
-            <button id='cancel_tag_form_button'>Cancel</button>
+            <br>
+            <br>
+            <div class='buttons-container'>
+                <button class='button' type='submit'>Add</button>
+                <form method='GET' action='/tags'>
+                    <button class='button'>Cancel</button>
+                </form>
+            </div>
         </form>
     {% endblock %}

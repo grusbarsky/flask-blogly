@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
+/* index */
+body{
+    background-color: RGB(194, 235, 239, 0.74)
+}
+
+#blogly{
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:120px;
+	letter-spacing:0.1em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: white;
+    text-shadow: 6px 6px #ff1f8f, 15px 15px #000000;
+}
+
+h2{
+    font-size: 50px;
+    font-family: "Roboto Mono", monospace;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+h3{
+    font-size: 35px;
+    font-family: "Roboto Mono", monospace;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+/* Lists */
+
+ul{
+    list-style-type: none;
+    font-size: 25px;
+    font-family: "Roboto Mono", monospace;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+a:link, a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #ff1f8f;
+}
+
+/* Buttons */
+
+.button{
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "Roboto Mono", monospace;
+    letter-spacing: 1px;
+    padding: 5px 25px 5px;
+    margin: 5px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.buttons-container{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+  
+  .button::after {
+    content: "";
+    background-color: hsla(330, 100%, 56%, 0.58);
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 3px;
+    left: 3px;
+    transition: 0.2s;
+  }
+  
+  .button:hover::after {
+    top: 0px;
+    left: 0px;
+  }
+
+  .form-button{
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+  }
+
+/* User details page */
+
+#user-page{
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+#user-name{
+    display: inline-block;
+    width: 50%;
+    margin: 0px;
+    text-align: left;
+}
+
+#user-image{
+    display: inline-block;
+    width: 50%;
+    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+    border: 0px;
+}
+
+#user-buttons{
+    display: inline-block;
+    text-align: left;
+}
+
+/* Forms */
+.form{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Mono", monospace;
+}
+label{
+    font-family: "Roboto Mono", monospace;
+}
+
+#tags-form{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+#tag-form{
+    display: inline-block;
+    width: 15%;
+    text-align: center;
+}
+
+/* Posts */
+
+#post-details{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.post-info{
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
+}

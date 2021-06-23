@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+    {% block content %}
+    <h2>Posts</h2>
+            <ul>
+                {% for post in posts %}
+                    <li>
+                        <div id='post-details'>
+                            <a href="/posts/{{post.id}}">{{post.title}}</a>
+                            <div class='post-info'>{{post.content}}</div>
+                            <i class='post-info'>By:{{post.user.first_name}} {{post.user.last_name}}</i>
+                            {% if post.tags %}
+                                <i class='post-info'>Tags:</i>
+                                    {% for tag in post.tags %}
+                                    <a class='post-info' href="/tags/{{tag.id}}"><i>{{ tag.name }}</i></a>
+                                    {% endfor %}
+                            {% endif %}
+                        </div>
+                    </li>
+                    <br>
+                {% endfor %}
+            </ul>
+    {% endblock %}
